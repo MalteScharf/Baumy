@@ -22,7 +22,7 @@ print("Server now listening on port " + str(port))
 
 
 (client_socket, client_address) = server.accept()
-print("Accepted Connec.tion from" + str(client_address))
+print("Accepted Connecction from" + str(client_address))
 
 while True:                                 # forever
     request = client_socket.recv(1024)    # receive data from client
