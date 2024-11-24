@@ -48,6 +48,7 @@ class Picture:
 
     def takePicture(self, cam_source):
         cam = VideoCapture(cam_source)
+        #cam = cv2.VideoCapture("/dev/video2")  # check this
         # Get the default frame width and height
         frame_width = int(cam.get(cv2.CAP_PROP_FRAME_WIDTH))
         frame_height = int(cam.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -64,11 +65,11 @@ input_path = "/home/malte/Documents/Programming Projects/Baumy/Baumy/InputPictur
 
 
 pic = Picture()
-pic.load_picture("/home/malte/Documents/Programming Projects/Baumy/Baumy/InputPictures/Input.jpg")
+#pic.load_picture("/home/malte/Documents/Programming Projects/Baumy/Baumy/InputPictures/Input.jpg")
 #pic.display_picture()
 #pic.calculate_brightest_pixel()
 #pic.show_brightest_pixel()
-pic.takePicture(0)
+pic.takePicture("/dev/video2")
 pic.calculate_brightest_pixel()
 pic.show_brightest_pixel()
-pic.display_picture()
+#pic.display_picture()
