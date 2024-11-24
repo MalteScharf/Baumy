@@ -26,9 +26,10 @@ class Picture:
     def calculate_brightest_pixel(self):
         if self.img is None: print("Image not found or path is incorrect")
         gray_image = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
-        #cv2.imshow("Image", gray_image)
+        gray_gaussian = cv2.GaussianBlur(gray_image,(5,5),0)
+        cv2.imshow("Image", gray_gaussian)
 
-        (minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc(gray_image)
+        (minVal, maxVal, minLoc, maxLoc) = cv2.minMaxLoc(gray_gaussian)
 
         self.brightestpixel = (maxLoc, maxVal)
 
@@ -42,6 +43,7 @@ class Picture:
         if self.img is None: print("Brightes Pixel Image not found")
         cv2.imshow('Brightest Pixel', self.img_brightestpixel)
         cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
     def get_brightest_pixel(self):
         return self.brightestpixel
@@ -63,13 +65,14 @@ class Picture:
 
 input_path = "/home/malte/Documents/Programming Projects/Baumy/Baumy/InputPictures/Input.jpg"
 
-
-pic = Picture()
-#pic.load_picture("/home/malte/Documents/Programming Projects/Baumy/Baumy/InputPictures/Input.jpg")
-#pic.display_picture()
-#pic.calculate_brightest_pixel()
-#pic.show_brightest_pixel()
-pic.takePicture("/dev/video2")
-pic.calculate_brightest_pixel()
-pic.show_brightest_pixel()
-#pic.display_picture()
+debug = False
+if (debug == True):
+    pic = Picture()
+    #pic.load_picture("/home/malte/Documents/Programming Projects/Baumy/Baumy/InputPictures/Input.jpg")
+    #pic.display_picture()
+    #pic.calculate_brightest_pixel()
+    #pic.show_brightest_pixel()
+    pic.takePicture("/dev/video0")
+    pic.calculate_brightest_pixel()
+    pic.show_brightest_pixel()
+    #pic.display_picture()

@@ -37,5 +37,5 @@ class BaumyClient:
 
 
 
-client = BaumyClient()
-client.sendMessage("closesrv")
+#client = BaumyClient()
+#client.sendMessage("closesrv")
