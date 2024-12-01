@@ -46,8 +46,13 @@ while True:
         led = LEDFunctions()
         led.lightone(ledcounter, 255,255,255)
         client_socket.send(str("Led on").encode("utf-8"))
-        ledcounter +=1 ;
-    
+        ledcounter +=1
+
+    elif request == 'reset counter':
+        led = LEDFunctions()
+        led.off()
+        ledcounter = 0
+        client_socket.send(str("Led counter reset").encode("utf-8"))
 
     elif request == 'led off':
         led = LEDFunctions()
